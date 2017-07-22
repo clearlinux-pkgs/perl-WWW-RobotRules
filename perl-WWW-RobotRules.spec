@@ -4,7 +4,7 @@
 #
 Name     : perl-WWW-RobotRules
 Version  : 6.02
-Release  : 10
+Release  : 11
 URL      : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Source0  : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Summary  : database of robots.txt-derived permissions
@@ -32,6 +32,10 @@ doc components for the perl-WWW-RobotRules package.
 %setup -q -n WWW-RobotRules-6.02
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make V=1  %{?_smp_mflags}
@@ -41,9 +45,10 @@ else
 fi
 
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make TEST_VERBOSE=1 test
 
 %install
@@ -60,8 +65,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.24.0/WWW/RobotRules.pm
-/usr/lib/perl5/site_perl/5.24.0/WWW/RobotRules/AnyDBM_File.pm
+/usr/lib/perl5/site_perl/5.26.0/WWW/RobotRules.pm
+/usr/lib/perl5/site_perl/5.26.0/WWW/RobotRules/AnyDBM_File.pm
 
 %files doc
 %defattr(-,root,root,-)
