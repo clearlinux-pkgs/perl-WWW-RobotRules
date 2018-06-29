@@ -4,13 +4,13 @@
 #
 Name     : perl-WWW-RobotRules
 Version  : 6.02
-Release  : 15
-URL      : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
-Source0  : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
+Release  : 16
+URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Summary  : database of robots.txt-derived permissions
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-WWW-RobotRules-doc
+Requires: perl-WWW-RobotRules-man
 BuildRequires : perl(URI)
 
 %description
@@ -20,12 +20,12 @@ SYNOPSIS
 use WWW::RobotRules;
 my $rules = WWW::RobotRules->new('MOMspider/1.0');
 
-%package doc
-Summary: doc components for the perl-WWW-RobotRules package.
-Group: Documentation
+%package man
+Summary: man components for the perl-WWW-RobotRules package.
+Group: Default
 
-%description doc
-doc components for the perl-WWW-RobotRules package.
+%description man
+man components for the perl-WWW-RobotRules package.
 
 
 %prep
@@ -38,7 +38,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 else
 %{__perl} Build.PL
 ./Build
@@ -68,6 +68,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/lib/perl5/site_perl/5.26.1/WWW/RobotRules.pm
 /usr/lib/perl5/site_perl/5.26.1/WWW/RobotRules/AnyDBM_File.pm
 
-%files doc
+%files man
 %defattr(-,root,root,-)
-%doc /usr/share/man/man3/*
+/usr/share/man/man3/WWW::RobotRules.3
+/usr/share/man/man3/WWW::RobotRules::AnyDBM_File.3
