@@ -4,13 +4,13 @@
 #
 Name     : perl-WWW-RobotRules
 Version  : 6.02
-Release  : 17
+Release  : 18
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Summary  : database of robots.txt-derived permissions
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-WWW-RobotRules-man
+BuildRequires : buildreq-cpan
 BuildRequires : perl(URI)
 
 %description
@@ -20,12 +20,13 @@ SYNOPSIS
 use WWW::RobotRules;
 my $rules = WWW::RobotRules->new('MOMspider/1.0');
 
-%package man
-Summary: man components for the perl-WWW-RobotRules package.
-Group: Default
+%package dev
+Summary: dev components for the perl-WWW-RobotRules package.
+Group: Development
+Provides: perl-WWW-RobotRules-devel = %{version}-%{release}
 
-%description man
-man components for the perl-WWW-RobotRules package.
+%description dev
+dev components for the perl-WWW-RobotRules package.
 
 
 %prep
@@ -54,9 +55,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -65,10 +66,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/WWW/RobotRules.pm
-/usr/lib/perl5/site_perl/5.26.1/WWW/RobotRules/AnyDBM_File.pm
+/usr/lib/perl5/vendor_perl/5.26.1/WWW/RobotRules.pm
+/usr/lib/perl5/vendor_perl/5.26.1/WWW/RobotRules/AnyDBM_File.pm
 
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/WWW::RobotRules.3
 /usr/share/man/man3/WWW::RobotRules::AnyDBM_File.3
