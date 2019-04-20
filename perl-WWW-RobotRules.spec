@@ -4,10 +4,10 @@
 #
 Name     : perl-WWW-RobotRules
 Version  : 6.02
-Release  : 26
+Release  : 27
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
-Summary  : database of robots.txt-derived permissions
+Summary  : Database of robots.txt-derived permissions
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 BuildRequires : buildreq-cpan
@@ -24,6 +24,7 @@ my $rules = WWW::RobotRules->new('MOMspider/1.0');
 Summary: dev components for the perl-WWW-RobotRules package.
 Group: Development
 Provides: perl-WWW-RobotRules-devel = %{version}-%{release}
+Requires: perl-WWW-RobotRules = %{version}-%{release}
 
 %description dev
 dev components for the perl-WWW-RobotRules package.
