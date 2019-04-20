@@ -4,7 +4,7 @@
 #
 Name     : perl-WWW-RobotRules
 Version  : 6.02
-Release  : 25
+Release  : 26
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Summary  : database of robots.txt-derived permissions
