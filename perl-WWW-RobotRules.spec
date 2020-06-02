@@ -4,7 +4,7 @@
 #
 Name     : perl-WWW-RobotRules
 Version  : 6.02
-Release  : 29
+Release  : 30
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz
 Summary  : database of robots.txt-derived permissions
@@ -86,5 +86,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/WWW/RobotRules.pm
-/usr/lib/perl5/vendor_perl/5.30.2/WWW/RobotRules/AnyDBM_File.pm
+/usr/lib/perl5/vendor_perl/5.30.3/WWW/RobotRules.pm
+/usr/lib/perl5/vendor_perl/5.30.3/WWW/RobotRules/AnyDBM_File.pm
